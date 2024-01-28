@@ -7,6 +7,8 @@ const url = "https://fakestoreapi.com/products";
 function App() {
   const [data, setData] = useState([]);
   const [basket, setBasket] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
 
   const fetchConnect = async () => {
     try {
@@ -20,7 +22,8 @@ function App() {
 
   const addBasket = (d) => {
     if (!basket.includes(d)) {
-      setBasket((prevBasket) => [...prevBasket, d]);
+      setBasket( [...basket, d]);
+      setTotalPrice(totalPrice + d.price);
     }
   };
 
@@ -30,8 +33,8 @@ function App() {
 
   return (
     <>
-      <Navbar basket={basket} />
-      <Products veri={data} addBasket={addBasket} />
+      <Navbar basket={basket} totalPrice={totalPrice}/>
+      <Products veri={data} addBasket={addBasket}  />
     </>
   );
 }

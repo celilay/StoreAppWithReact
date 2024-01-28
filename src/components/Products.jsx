@@ -2,6 +2,7 @@ import React from "react";
 import "./product.scss"
 
 export const Products = ({ veri,addBasket }) => {
+  
   return (
     <>
       <div className="container">
